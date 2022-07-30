@@ -53,7 +53,10 @@ const MainLayout = (props) => {
               >
                 <MainMenu type="mobile" onChangeMobile={handlerMobileMenu} />
               </div>
-              <MainHeader title={AppConfig.appName} onChange={handlerMobileMenu} />
+              <MainHeader
+                title={AppConfig.appName}
+                onChange={handlerMobileMenu}
+              />
             </div>
           )}
           {!responsive && (
@@ -101,7 +104,12 @@ const MainLayout = (props) => {
           <div className={style.layoutMainContent}>{props.children}</div>
         </div>
       ) : (
-        <div className={style.layoutMainContent}>{props.children}</div>
+        <div
+          className={style.layoutMainContent}
+          style={{ width: "100%", height: "100vh", flex: 1 }}
+        >
+          {props.children}
+        </div>
       )}
     </>
   );

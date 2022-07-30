@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./index.module.scss";
-const SkInput = ({value,title,onChangeText,disabled,type}) => {
+const SkInput = ({ value, title, onChangeText, disabled, type, margin }) => {
   const [onFocus, setOnFocus] = useState(false);
   const [inputValue, setInputValue] = useState("");
   useEffect(() => {
@@ -8,16 +8,12 @@ const SkInput = ({value,title,onChangeText,disabled,type}) => {
   }, [value]);
   return (
     <div
+      style={{ margin: margin ?? "0px" }}
       className={
-        !onFocus
-          ? `${styles.skInputContainer}`
-          : `${styles.skInputFocused}`
+        !onFocus ? `${styles.skInputContainer}` : `${styles.skInputFocused}`
       }
     >
-      <div
-        style={{ fontWeight: onFocus ? "400" : "300" }}
-        className={`${styles.skInputTitle}`}
-      >
+      <div style={{ fontWeight: "300" }} className={`${styles.skInputTitle}`}>
         {title ?? "Input"}
       </div>
       <input

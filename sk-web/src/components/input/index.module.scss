@@ -1,5 +1,5 @@
 $inputColor: #344767;
-$borderColor: #747b8a;
+$borderColor: #747b8a88;
 $titleColor: #344767;
 $shadowColor: #747b8a;
 
@@ -25,7 +25,6 @@ $shadowColor: #747b8a;
     background-color: #fff;
     color: $borderColor;
     transition: all ease 500ms;
-    font-weight: 100;
   }
   input {
     width: calc(100% - 32px);
@@ -54,7 +53,7 @@ $shadowColor: #747b8a;
   padding: 10px 16px;
   border-style: solid;
   border-width: 1px;
-  border-color: #000;
+  border-color: $borderColor;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -65,8 +64,7 @@ $shadowColor: #747b8a;
     height: 15px;
     font-size: 14px;
     background-color: #fff;
-    color: #000;
-    font-weight: 100;
+    color: $inputColor;
     transition: all ease 500ms;
   }
   input {

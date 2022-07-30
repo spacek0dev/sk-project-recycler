@@ -46,13 +46,14 @@ const LoginForm = ({ onSuccess }) => {
   };
   return (
     <>
-      <Teaser />
       <SkForm
+        styles={{ textAlign: "center" }}
         submit={() => {
           onSubmitLogin();
         }}
       >
         <SkInput
+          margin={"20px 0px"}
           onChangeText={(value) => {
             setForm({ ...form, username: value });
           }}
@@ -61,6 +62,7 @@ const LoginForm = ({ onSuccess }) => {
           title={"Username"}
         />
         <SkInput
+          margin={"20px 0px"}
           onChangeText={(value) => {
             setForm({ ...form, password: value });
           }}
@@ -68,7 +70,7 @@ const LoginForm = ({ onSuccess }) => {
           type="password"
           title={"Contraseña"}
         />
-        <SkButton type={"submit"} text={"Iniciar sesion"} />
+        <SkButton margin={"5px 0px"} type={"submit"} text={"Iniciar sesion"} />
       </SkForm>
     </>
   );

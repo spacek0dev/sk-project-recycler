@@ -11,6 +11,7 @@ $offset: $lat - $thickness;
     position: fixed;
     align-items: center;
     justify-content: center;
+    z-index: 999;
     display: flex;
     background-color: #eeeeee33;
 }
