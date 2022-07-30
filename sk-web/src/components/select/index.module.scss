@@ -1,0 +1,95 @@
+$inputColor: #555;
+$borderColor: #777;
+$titleColor: #555;
+$shadowColor: #000;
+
+.skInputContainer {
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+  margin: 10px 0px;
+  padding: 10px 16px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: $borderColor;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  transition: all 300ms;
+  .skInputTitle {
+    position: absolute;
+    top: -10px;
+    height: 15px;
+    font-size: 14px;
+    background-color: #fff;
+    color: $borderColor;
+    transition: all ease 500ms;
+    font-weight: 100;
+  }
+  select {
+    width: calc(100% - 32px);
+    position: absolute;
+    bottom: 0px;
+    height: 40px;
+    border: none;
+    font-size: 14px;
+    outline: none;
+    background-color: transparent;
+    color: $inputColor;
+    &::after {
+      content: "";
+    }
+  }
+  select option {
+    margin: 40px;
+    background: red;
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  }
+  select:-webkit-autofill {
+    -webkit-text-fill-color: $inputColor !important;
+  }
+}
+.skInputFocused {
+  transition: all 300ms;
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+  margin: 10px 0px;
+  padding: 10px 16px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  .skInputTitle {
+    position: absolute;
+    top: -10px;
+    height: 15px;
+    font-size: 14px;
+    background-color: #fff;
+    color: #000;
+    font-weight: 100;
+    transition: all ease 500ms;
+  }
+  select {
+    width: calc(100% - 32px);
+    position: absolute;
+    bottom: 0px;
+    height: 40px;
+    color: $inputColor;
+    border: none;
+    font-size: 14px;
+    outline: none;
+    background-color: transparent;
+    &::after {
+      content: "";
+    }
+  }
+  select:-webkit-autofill {
+    -webkit-text-fill-color: $inputColor !important;
+  }
+}

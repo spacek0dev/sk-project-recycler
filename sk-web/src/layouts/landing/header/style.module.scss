@@ -1,0 +1,46 @@
+.headerContainer {
+  position: fixed;
+  background-color: #00000099;
+  width: 100%;
+  min-height: 60px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  padding: 1% 5%;
+  z-index: 999;
+  .headerContainerLogo {
+    font-size: 2rem;
+    cursor: pointer;
+    color: #fff;
+  }
+  .headerContainerPhone {
+    display: block;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #fff;
+  }
+  .headerContainerEmail {
+    display: block;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #fff;
+  }
+  .headerContainerMenu {
+    // width: 100%;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #fff;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .headerContainer {
+    .headerContainerPhone {
+      display: none;
+    }
+    .headerContainerEmail {
+      display: none;
+    }
+  }
+}

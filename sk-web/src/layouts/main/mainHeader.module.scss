@@ -1,0 +1,25 @@
+.layoutHeaderContainer {
+    min-height: 80px;
+    height: 100%;
+    width: 100%;
+    padding: 10px 20px;
+    .layoutHeaderTitle {
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        margin: 0 auto;
+        span {
+            font-size: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+    }
+    .layoutHeaderBtn{
+        position: absolute;
+        left: 10px;
+        z-index: 10;
+    }
+}

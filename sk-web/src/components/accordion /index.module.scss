@@ -1,0 +1,51 @@
+.skAccordion {
+  margin: 0;
+  border-width: 0px 1px 1px 1px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-bottom: 1px solid #aaa;
+}
+
+.skAccordion:nth-of-type(1) {
+  border-top-width: 1px;
+}
+
+.skAccordionTitle {
+  font-size: 18px;
+  color: #3e4e50;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0px;
+}
+
+.skAccordionTitle:hover {
+  cursor: pointer;
+}
+
+.skAccordion img.skAccordionToggle {
+  width: 16px;
+  height: 16px;
+  align-self: center;
+  margin-left: auto;
+  transition: all 0.35s ease;
+}
+
+.skAccordion img.skAccordionToggle[aria-expanded="true"] {
+  transform: rotateZ(90deg);
+}
+
+.skAccordionContent {
+  overflow: hidden;
+  max-height: 1000px;
+  font-weight: 200;
+  transition: max-height 1s ease-in-out;
+}
+
+.skAccordionContent[aria-expanded="true"] {
+  max-height: 0px;
+  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+}
