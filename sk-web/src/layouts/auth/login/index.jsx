@@ -33,7 +33,7 @@ const LoginForm = ({ onSuccess }) => {
               }
             );
             handlerLogin(result.access_token, profile.data);
-            hideLoader();
+            // hideLoader();
             onSuccess();
           }
         })

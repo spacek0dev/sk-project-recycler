@@ -18,12 +18,12 @@ const SkSelect = ({value,title,onChangeText,options}) => {
             <div style={{ fontWeight: onFocus ? '700' : '300' }} className={`${styles.skInputTitle}`}>
                 {title ?? "Input"}
             </div>
-            <select name="" id="" value={selectValue} onChange={(e) => { onChangeText(e.target.value) }}>
+            <select  value={selectValue} onChange={(e) => { onChangeText(e.target.value) }}>
                 <option value={''} disabled>{'Selecciona una option'}</option>
                 {
                     options.map((value, index) => {
                         return (
-                            <option key={index} value={value._id}>{value.name ?? '---'}</option>
+                            <option key={value._id} value={value._id}>{value.name ?? '---'}</option>
                         )
                     })
                 }

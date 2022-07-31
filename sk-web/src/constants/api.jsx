@@ -7,4 +7,8 @@ export const API = {
   login: "/auth/login",
   register: "/auth/register",
   user: "/auth/user",
+  roles: "/roles",
+  countrys: "/countrys",
+  areas: (countryId) => `/areas/country/${countryId}`,
+  allUsers:'/users/all'
 };

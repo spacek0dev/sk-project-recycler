@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import styles from '../../styles/components/sidebar.module.scss';
+import styles from './index.module.scss';
 import { IoIosClose } from 'react-icons/io'
-const SpaceSideBar = ({ children,show, open, close, title }) => {
+const SkSideBar = ({ children,show, open, close, title }) => {
     useEffect(() => {
 
     }, [open])
@@ -16,4 +16,4 @@ const SpaceSideBar = ({ children,show, open, close, title }) => {
     </div>
 }
 
-export default SpaceSideBar;
+export default SkSideBar;

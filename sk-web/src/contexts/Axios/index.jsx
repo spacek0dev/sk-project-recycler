@@ -55,7 +55,9 @@ export const AxiosProvider = (props) => {
         http: signedRequest,
       }}
     >
-      {props.children}
+      {authContext.sessionToken != "not-logued" && (
+        <React.Fragment>{props.children}</React.Fragment>
+      )}
     </AxiosContext.Provider>
   );
 };

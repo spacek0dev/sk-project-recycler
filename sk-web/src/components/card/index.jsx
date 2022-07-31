@@ -7,9 +7,17 @@ const Card = styled.div`
   padding: ${(props) => props.padding ?? "0px"} !important;
   border-radius: 8px;
 `;
-const SkCard = ({ children, background, color, padding, margin }) => {
+const SkCard = ({
+  style = {},
+  children,
+  background,
+  color,
+  padding,
+  margin,
+}) => {
   return (
     <Card
+      style={style}
       background={background}
       color={color}
       padding={padding}

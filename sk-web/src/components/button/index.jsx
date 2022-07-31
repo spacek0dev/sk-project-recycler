@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Button = styled.button`
-  min-height: 40px;
+  height: ${(props) => props.height ?? "40px"} !important;
   min-width: 150px;
   cursor: pointer;
   border-radius: 6px;
@@ -20,6 +20,7 @@ const SkButton = ({
   background,
   textColor,
   margin,
+  height,
   padding,
 }) => {
   return (
@@ -28,6 +29,7 @@ const SkButton = ({
       textColor={textColor}
       margin={margin}
       padding={padding}
+      height={height}
       value={text}
       onClick={onClick}
       type={type || "button"}

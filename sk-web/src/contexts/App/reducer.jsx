@@ -1,38 +1,30 @@
 const appTypes = {
-    all: 'ALL',
-    users: 'USERS',
-    roles: 'ROLES',
-    organizations: 'ORGANIZATIONS',
-    organizationTypes: 'ORGANIZATIONSTYPE',
-    organizationServices: 'ORGANIZATIONSERVICES',
-    organizationAppointments: 'ORGANIZATIONAPPOINTMENTS'
-}
+  all: "ALL",
+  countrys: "COUNTRYS",
+  areas: "AREAS",
+  users: "USERS",
+};
 const initialState = {
-    roles: [],
-    organizations: [],
-    organizationTypes: [],
-    organizationServices: [],
-    organizationAppointments: []
-}
+  roles: [],
+  countrys: [],
+  areas: [],
+  users: [],
+};
 const appReducer = (state = initialState, action = {}) => {
-    switch (action.type) {
-        case appTypes.all:
-            return { ...action.payload }
-        case appTypes.roles:
-            return { ...state, roles: action.payload }
-        case appTypes.users:
-            return { ...state, users: action.payload }
-        case appTypes.organizations:
-            return { ...state, organizations: action.payload }
-        case appTypes.organizationTypes:
-            return { ...state, organizationTypes: action.payload }
-        case appTypes.organizationServices:
-            return { ...state, organizationServices: action.payload }
-        case appTypes.organizationAppointments:
-            return { ...state, organizationAppointments: action.payload }
-        default:
-            return state;
-    }
-}
+  switch (action.type) {
+    case appTypes.all:
+      return { ...action.payload };
+    case appTypes.roles:
+      return { ...state, roles: action.payload };
+    case appTypes.countrys:
+      return { ...state, countrys: action.payload };
+    case appTypes.areas:
+      return { ...state, areas: action.payload };
+    case appTypes.users:
+      return { ...state, users: action.payload };
+    default:
+      return state;
+  }
+};
 
 export { initialState, appTypes, appReducer };

@@ -6,21 +6,21 @@ import useMount from "src/hooks/useMount";
 import style from "./index.module.scss";
 const PrivatePage = ({ children }) => {
   const auth = UseAuth();
-  const { isLanding, setIsLanding } = useUi();
+  const { isLanding, setIsLanding, showLoader, hideLoader } = useUi();
   const [ready, setReady] = useState(false);
   useEffect(() => {
+    showLoader();
     let session = auth.sessionToken;
     if (session.length >= 20) {
       setTimeout(() => {
         setIsLanding(false);
         setReady(true);
+        hideLoader();
       }, 1500);
     }
-  });
-  if (ready) {
+  }, [auth.sessionToken]);
+  if (ready && !isLanding) {
     return <div className={style.pageContainer}>{children}</div>;
-  } else {
-    return <React.Fragment>{isLanding && <SkLoader />}</React.Fragment>;
   }
 };
 
