@@ -1,17 +1,8 @@
 import Axios from "axios";
 import { useRouter } from "next/router";
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
+import React, { createContext, useContext, useEffect, useReducer, useState } from "react";
 import { API, server_url } from "src/constants/api";
-import {
-  session_auth_token_space,
-  profile_auth_token_space,
-} from "../../constants/vars";
+import { session_auth_token_space, profile_auth_token_space } from "../../constants/vars";
 
 import { AuthReducer, AuthTypes, initialState } from "./reducer";
 
@@ -52,15 +43,20 @@ export const AuthProvider = (props) => {
     dispatch({ type: AuthTypes.all, payload: { session: token, profile } });
   };
   const logout = () => {
-    localStorage.clear();
-    dispatch({
-      type: AuthTypes.all,
-      payload: { session: "not-session", profile: {} },
-    });
-    router.replace("/auth/login");
-  };
-  const role = () => {
-    return state.profile.roleId.name;
+    router
+      .replace("/auth/login")
+      .then((result) => {
+        console.log('result: ', result);
+        dispatch({
+          type: AuthTypes.all,
+          payload: { session: "not-session", profile: {} },
+        });
+        localStorage.clear();
+      })
+      .catch((err) => {
+        console.log('err: ', err);
+
+      });
   };
   useEffect(() => {
     existSession();
@@ -77,7 +73,6 @@ export const AuthProvider = (props) => {
         saveSession,
         getToken,
         logout,
-        role,
       }}
     >
       {/* {state.session === "not-session" && (

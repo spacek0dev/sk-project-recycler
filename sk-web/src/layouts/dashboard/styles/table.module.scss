@@ -1,0 +1,49 @@
+.table {
+  overflow-x: auto;
+  padding: 24px 12px;
+  color: #525f7f;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  table {
+    border-collapse: separate;
+    border-spacing: 5px 0px;
+    width: 100%;
+    border-radius: 10px !important;
+  }
+  thead {
+    tr {
+      border-radius: 12px !important;
+    }
+  }
+  th,
+  td {
+    text-align: left;
+    max-width: 200px;
+    text-align: justify;
+    padding: 10px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-bottom: 1px solid #525f7f45;
+  }
+  tbody {
+    tr:hover {
+      cursor: pointer;
+      border: 1px solid #525f7f45;
+      color: #2563eb;
+    }
+  }
+  tr:nth-child(even) {
+    // background-color: #f2f2f2;
+  }
+}
+.tableHead {
+  .tableHeadItem {
+    border-bottom: 1px solid #7b809a33;
+    height: 40px;
+  }
+}
+
+.table::-webkit-scrollbar {
+  display: none;
+}

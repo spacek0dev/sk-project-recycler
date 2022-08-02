@@ -11,8 +11,11 @@ export class UsersService {
   constructor(
     @InjectModel(Users.name) private usersModel: Model<UsersDocument>,
   ) {}
-  async getAllUsers(): Promise<IResponse> {
+  async getAllUsers(page, pageSize): Promise<IResponse> {
+    const _page = parseInt(page) || 1;
+    const _pageSize = parseInt(pageSize) || 20;
     try {
+      const count = await this.usersModel.count();
       const document = await this.usersModel
         .find(
           {},
@@ -24,7 +27,10 @@ export class UsersService {
             enabled: 1,
           },
         )
-        .populate('personId', '_id firstname lastname username phone email')
+        .populate(
+          'personId',
+          '_id firstname lastname username phone email address dni addressReference terms_conditions',
+        )
         .populate('roleId', '_id name')
         .populate({
           path: 'areasId',
@@ -32,9 +38,11 @@ export class UsersService {
           populate: { path: 'countryId', select: '_id name key currency' },
         })
         .populate({ path: 'organizationId', match: 'organizationId' != null })
+        .skip(_page == 1 ? 0 : _page * _pageSize)
+        .limit(_pageSize)
         .exec();
 
-      return { status: HttpStatus.OK, data: document };
+      return { status: HttpStatus.OK, data: { rows: document, count } };
     } catch (error) {
       return {
         status: HttpStatus.BAD_REQUEST,

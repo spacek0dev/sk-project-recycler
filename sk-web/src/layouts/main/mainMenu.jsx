@@ -7,9 +7,11 @@ import AppConfig from "src/config";
 import { IoIosLogOut, IoIosHome, IoIosClose } from "react-icons/io";
 import { AuthContext } from "src/contexts/Auth";
 import { useUi } from "src/contexts/UI/ui";
+import { UseTranslate } from "src/contexts/Translate";
 
+const logout = "logout";
 const MainMenu = (props) => {
-  const {setIsLanding} = useUi();
+  const { setIsLanding } = useUi();
   const genearteIcon = (key) => {
     if (key === "home") {
       return <IoIosHome />;
@@ -18,6 +20,7 @@ const MainMenu = (props) => {
     }
   };
   const router = useRouter();
+  const { translate } = UseTranslate();
   const useAuth = useContext(AuthContext);
   return (
     <>
@@ -32,21 +35,32 @@ const MainMenu = (props) => {
           <div className={style.menuListMobile}>
             {AppConfig.menuList.map((value) => {
               return (
-                <Link href={value.link} key={value.key}>
+                <Link href={`${value.link}${value.query ?? ""}`} key={value.key}>
                   <div
                     style={{
                       textTransform: props.state ? "inherit" : "uppercase",
                     }}
-                    className={`${style.menuListMobileItem} ${
-                      router.pathname == value.link ? style.active : ""
-                    }`}
+                    className={`${style.menuListMobileItem} ${router.pathname == value.link ? style.active : ""}`}
                     onClick={props.onChangeMobile}
                   >
-                    {!!!props.state ? value.name : genearteIcon(value.icon)}
+                    {!!!props.state ? translate(value.name) : genearteIcon(value.icon)}
                   </div>
                 </Link>
               );
             })}
+            <div
+              style={{
+                textTransform: props.state ? "inherit" : "uppercase",
+              }}
+              className={`${style.menuListMobileItem}`}
+              onClick={() => {
+                setIsLanding(true);
+                props.onChangeMobile();
+                useAuth.logout();
+              }}
+            >
+              {!!!props.state ? translate(logout) : <IoIosLogOut />}
+            </div>
           </div>
         </>
       )}
@@ -55,16 +69,14 @@ const MainMenu = (props) => {
           <div className={style.menuListDesktop}>
             {AppConfig.menuList.map((value) => {
               return (
-                <Link href={value.link} key={value.key}>
+                <Link href={`${value.link}${value.query ?? ""}`} key={value.key}>
                   <div
                     style={{
                       textTransform: props.state ? "inherit" : "uppercase",
                     }}
-                    className={`${style.menuListDesktopItem} ${
-                      router.pathname == value.link ? style.active : ""
-                    }`}
+                    className={`${style.menuListDesktopItem} ${router.pathname == value.link ? style.active : ""}`}
                   >
-                    {props.state ? value.name : genearteIcon(value.icon)}
+                    {props.state ? translate(value.name) : genearteIcon(value.icon)}
                   </div>
                 </Link>
               );
@@ -78,7 +90,7 @@ const MainMenu = (props) => {
               }}
               className={`${style.menuListDesktopItem}`}
             >
-              {props.state ? "Logout" : <IoIosLogOut />}
+              {props.state ? translate(logout) : <IoIosLogOut />}
             </div>
           </div>
         </>

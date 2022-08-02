@@ -1,4 +1,12 @@
-import { Controller, Res, Body, Param, UseGuards, Get } from '@nestjs/common';
+import {
+  Controller,
+  Res,
+  Body,
+  Param,
+  UseGuards,
+  Get,
+  Query,
+} from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/guards/jwt.guard';
 import { Person } from 'src/schemas';
@@ -12,8 +20,12 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
   @UseGuards(JwtAuthGuard)
   @Get('/all')
-  async update(@Res() response) {
-    const document = await this.usersService.getAllUsers();
+  async update(
+    @Res() response,
+    @Query('page') page,
+    @Query('pageSize') pageSize,
+  ) {
+    const document = await this.usersService.getAllUsers(page, pageSize);
     return response.status(document.status).json(document);
   }
 }

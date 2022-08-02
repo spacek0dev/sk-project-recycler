@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 const Card = styled.div`
@@ -7,23 +8,10 @@ const Card = styled.div`
   padding: ${(props) => props.padding ?? "0px"} !important;
   border-radius: 8px;
 `;
-const SkCard = ({
-  style = {},
-  children,
-  background,
-  color,
-  padding,
-  margin,
-}) => {
+const SkCard = ({ style = {}, children, background, color, padding, margin }) => {
   return (
-    <Card
-      style={style}
-      background={background}
-      color={color}
-      padding={padding}
-      margin={margin}
-    >
-      {children}
+    <Card style={style} background={background} color={color} padding={padding} margin={margin}>
+      <React.Fragment>{children}</React.Fragment>
     </Card>
   );
 };

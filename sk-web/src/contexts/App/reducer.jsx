@@ -3,12 +3,14 @@ const appTypes = {
   countrys: "COUNTRYS",
   areas: "AREAS",
   users: "USERS",
+  organizations: "ORGANIZATIONS",
 };
 const initialState = {
   roles: [],
   countrys: [],
   areas: [],
   users: [],
+  organizations: [],
 };
 const appReducer = (state = initialState, action = {}) => {
   switch (action.type) {
@@ -22,6 +24,8 @@ const appReducer = (state = initialState, action = {}) => {
       return { ...state, areas: action.payload };
     case appTypes.users:
       return { ...state, users: action.payload };
+    case appTypes.organizations:
+      return { ...state, organizations: action.payload };
     default:
       return state;
   }

@@ -2,7 +2,7 @@
   right: -100%;
   width: 100%;
   height: 100%;
-    z-index: 9999;
+  z-index: 9999;
   background-color: black;
   position: absolute;
   transition: all ease 500ms;
@@ -10,16 +10,16 @@
 .spaceSideBarComponentShow {
   width: 100%;
   height: 100%;
-    z-index: 9999;
+  z-index: 9999;
   background-color: #21212188;
-  position: absolute;
+  position: fixed;
   right: 0px;
   transition: all ease 500ms;
 }
 
 .sideBarHeader {
   width: 100%;
-  min-height: 80px;
+  min-height: 60px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -32,8 +32,7 @@
     width: calc(100% - 80px);
     min-height: 20px;
     text-align: center;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-weight: 400;
     font-size: 16px;
     color: #212121;
@@ -60,4 +59,10 @@
   z-index: 9999;
   background-color: #fff;
   transition: all ease 500ms;
+}
+.skSideBarContent {
+  width: 100%;
+  height: calc(100% - 150px);
+  overflow: auto;
+  background-color: red;
 }

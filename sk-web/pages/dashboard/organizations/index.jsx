@@ -7,21 +7,20 @@ import { useAppContext } from "src/contexts/App";
 import { appTypes } from "src/contexts/App/reducer";
 import { UseAuth } from "src/contexts/Auth";
 import { UseTranslate } from "src/contexts/Translate";
-import { useUi } from "src/contexts/UI/ui";
 import UseRoute from "src/hooks/useRouter";
-import ListUsers from "src/layouts/dashboard/users/listUsers";
-import RegisterUserForm from "src/layouts/dashboard/users/registerForm";
+import ListOrganizations from "src/layouts/dashboard/organizations/listOrganizations";
+import RegisterOrganizationForm from "src/layouts/dashboard/organizations/registerForm";
 import PrivatePage from "src/layouts/pageContainer/privatePage";
 
 const tabs = [
-  { name: "list-users", key: "list" },
-  { name: "register-users", key: "register" },
+  { name: "list-organizations", key: "list" },
+  { name: "register-organizations", key: "register" },
 ];
-const UsersPage = () => {
+const OrganizationsPage = () => {
   const { profile } = UseAuth();
   const { validateRoute } = UseRoute();
   const { translate } = UseTranslate();
-  const { data, updateValue, refreshUsersData } = useAppContext();
+  const { data, updateValue } = useAppContext();
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const router = useRouter();
@@ -35,7 +34,7 @@ const UsersPage = () => {
   };
 
   useEffect(() => {
-    validateRoute(profile?.roleId?.name,true)
+    validateRoute(profile?.roleId?.name, true);
     selectTab(router.query.tab);
   }, [router.query]);
   return (
@@ -51,7 +50,7 @@ const UsersPage = () => {
       >
         <div>
           <p style={{ fontWeight: "300" }}>
-            Desde aqui tendras <b>acceso</b> a los usuarios registrados, y podras <b>crear</b> nuevos usuarios
+            Desde aqui tendras <b>acceso</b> a las organizaciones registradas, y podras <b>crear</b> nuevas organizaciones.
           </p>
         </div>
       </SkCard>
@@ -68,7 +67,7 @@ const UsersPage = () => {
             <SkButton
               margin={"0px 2px"}
               key={value.key}
-              height={"25px"}
+              height={"40px"}
               background={"transparent"}
               textColor={"#2563eb"}
               text={translate(value.name)}
@@ -85,9 +84,9 @@ const UsersPage = () => {
       <SkCard padding={"12px 0px"} margin={"12px 0px 12px"}>
         {tab == tabs[0].key && (
           <SkFadeIn>
-            <ListUsers
-              data={data.users.rows}
-              count={data.users.count}
+            <ListOrganizations
+              data={data.organizations.rows}
+              count={data.organizations.count}
               page={page}
               pageSize={pageSize}
               onChangePage={(value) => {
@@ -99,12 +98,10 @@ const UsersPage = () => {
         )}
         {tab == tabs[1].key && (
           <SkFadeIn>
-            <RegisterUserForm
-              roles={data.roles}
-              organizations={data.organizations}
+            <RegisterOrganizationForm
               areas={data.areas}
               onSuccess={() => {
-                updateValue(appTypes.users);
+                updateValue(appTypes.organizations);
               }}
             />
           </SkFadeIn>
@@ -113,4 +110,5 @@ const UsersPage = () => {
     </PrivatePage>
   );
 };
-export default UsersPage;
+
+export default OrganizationsPage;

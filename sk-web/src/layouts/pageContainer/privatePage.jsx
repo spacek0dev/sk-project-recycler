@@ -17,6 +17,8 @@ const PrivatePage = ({ children }) => {
         setReady(true);
         hideLoader();
       }, 1500);
+    }else{
+      hideLoader();
     }
   }, [auth.sessionToken]);
   if (ready && !isLanding) {

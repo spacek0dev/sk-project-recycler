@@ -15,6 +15,10 @@ const ItemsForm = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-between;
+  @media screen and (max-width: 700px) {
+    justify-content: center;
+  }
 `;
 const ItemForm = styled.div`
   display: flex;
@@ -43,54 +47,43 @@ const RegisterDescription = styled.p`
   text-align: center;
 `;
 
-const RegisterUserForm = (props) => {
+const RegisterOrganizationForm = (props) => {
   const { notify } = useUi();
   const { post } = useAxios();
   const { translate } = UseTranslate();
   const [areasId, setAreaId] = useState("");
-  const [roleId, setRoleId] = useState("");
-  const [organizationId, setOrganizationId] = useState("");
   const [form, setForm] = useState({
-    username: "",
-    password: "",
+    name: "",
     email: "",
-    firstname: "",
-    lastname: "",
     phone: "",
-    dni: "",
     address: "",
-    addressReference: "",
-    terms_conditions: true,
+    logo: "---",
+    extras: [],
+    images: [],
   });
+
   const clearForm = () => {
     setForm({
-      username: "",
-      password: "",
+      name: "",
       email: "",
-      firstname: "",
-      lastname: "",
       phone: "",
-      dni: "",
       address: "",
-      addressReference: "",
-      terms_conditions: true,
+      logo: "---",
+      extras: [],
+      images: [],
     });
     setAreaId("");
-    setRoleId("");
-    setOrganizationId("");
   };
   const onSubmitLogin = () => {
     const registerData = {
-      roleId,
+      ...form,
       areasId,
-      person: form,
-      organizationId: organizationId ? organizationId : null,
     };
     let isValid = validateObject(registerData);
     if (isValid === 0) {
-      post(`${API.register}`, registerData)
+      post(`${API.organizations}`, registerData)
         .then((result) => {
-          notify(translate("user_registered"), "success");
+          notify(translate("organization_registered"), "success");
           clearForm();
           props.onSuccess();
         })
@@ -102,8 +95,8 @@ const RegisterUserForm = (props) => {
   return (
     <SkCard>
       <RegisterTitleContainer>
-        <RegisterTitle>{translate("register-users")}</RegisterTitle>
-        <RegisterDescription>{translate("register-user-description")}</RegisterDescription>
+        <RegisterTitle>{translate("register-organizations")}</RegisterTitle>
+        <RegisterDescription>{translate("register-organization-description")}</RegisterDescription>
       </RegisterTitleContainer>
       <SkForm
         submit={() => {
@@ -124,74 +117,18 @@ const RegisterUserForm = (props) => {
             />
           </ItemForm>
           <ItemForm>
-            <SkSelect
-              key="roles"
-              options={props.roles}
-              title={translate("roles")}
-              value={roleId}
-              onChangeText={(value) => {
-                setRoleId(value);
-              }}
-            />
-          </ItemForm>
-          {roleId && props.roles.find((v) => v._id === roleId).name === "Colaborador" && (
-            <ItemForm>
-              <SkSelect
-                key="organizations"
-                options={props.organizations.rows}
-                title={translate("organizations")}
-                value={organizationId}
-                onChangeText={(value) => {
-                  setOrganizationId(value);
-                }}
-              />
-            </ItemForm>
-          )}
-          <ItemForm>
             <SkInput
               margin={"20px 0px"}
-              value={form.username}
-              title={translate("username")}
+              value={form.name}
+              title={translate("name")}
               onChangeText={(text) => {
-                setForm({ ...form, username: text });
+                setForm({ ...form, name: text });
               }}
             />
           </ItemForm>
           <ItemForm>
             <SkInput
               margin={"20px 0px"}
-              value={form.firstname}
-              title={translate("firstname")}
-              onChangeText={(text) => {
-                setForm({ ...form, firstname: text });
-              }}
-            />
-          </ItemForm>
-          <ItemForm>
-            <SkInput
-              margin={"20px 0px"}
-              value={form.lastname}
-              title={translate("lastname")}
-              onChangeText={(text) => {
-                setForm({ ...form, lastname: text });
-              }}
-            />
-          </ItemForm>
-          <ItemForm>
-            <SkInput
-              margin={"20px 0px"}
-              type={"password"}
-              value={form.password}
-              title={translate("password")}
-              onChangeText={(text) => {
-                setForm({ ...form, password: text });
-              }}
-            />
-          </ItemForm>
-          <ItemForm>
-            <SkInput
-              margin={"20px 0px"}
-              type={"email"}
               value={form.email}
               title={translate("email")}
               onChangeText={(text) => {
@@ -212,16 +149,6 @@ const RegisterUserForm = (props) => {
           <ItemForm>
             <SkInput
               margin={"20px 0px"}
-              value={form.dni}
-              title={translate("dni")}
-              onChangeText={(text) => {
-                setForm({ ...form, dni: text });
-              }}
-            />
-          </ItemForm>
-          <ItemForm>
-            <SkInput
-              margin={"20px 0px"}
               value={form.address}
               title={translate("address")}
               onChangeText={(text) => {
@@ -229,20 +156,10 @@ const RegisterUserForm = (props) => {
               }}
             />
           </ItemForm>
-          <ItemForm>
-            <SkInput
-              margin={"20px 0px"}
-              value={form.addressReference}
-              title={translate("reference")}
-              onChangeText={(text) => {
-                setForm({ ...form, addressReference: text });
-              }}
-            />
-          </ItemForm>
         </ItemsForm>
-        <SkButton width={"220px"} margin={"15px 0px"} type={"submit"} text={"Registrar usuario"} />
+        <SkButton width={"220px"} margin={"15px 0px"} type={"submit"} text={"Registrar Organizacion"} />
       </SkForm>
     </SkCard>
   );
 };
-export default RegisterUserForm;
+export default RegisterOrganizationForm;

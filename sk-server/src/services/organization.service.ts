@@ -24,10 +24,18 @@ export class OrganizationService {
     }
   }
 
-  async readAll(): Promise<IResponse> {
+  async readAll(page, pageSize): Promise<IResponse> {
+    const _page = parseInt(page) || 1;
+    const _pageSize = parseInt(pageSize) || 20;
     try {
-      const documents = await this.organizationModel.find().exec();
-      return { status: HttpStatus.OK, data: documents };
+      const count = await this.organizationModel.count();
+      const document = await this.organizationModel
+        .find()
+        .populate('areasId')
+        .skip(_page == 1 ? 0 : _page * _pageSize)
+        .limit(_pageSize)
+        .exec();
+      return { status: HttpStatus.OK, data: { rows: document, count } };
     } catch (error) {
       return {
         status: HttpStatus.BAD_REQUEST,
