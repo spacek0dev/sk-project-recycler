@@ -7,23 +7,22 @@ import { Users } from './user';
 export type ContactFormsDocument = ContactForms & Document;
 @Schema({ timestamps: true, collection: 'contactforms' })
 export class ContactForms {
-    @ApiProperty()
-    @Prop()
-    title: String
-    @ApiProperty()
-    @Prop()
-    message: String
-    @ApiProperty()
-    @Prop()
-    date: String
-    @ApiProperty()
-    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: Users.name })
-    userId: Users;
-    @ApiProperty()
-    @Prop()
-    platform: String
-    @Prop()
-    email: String
-
+  @ApiProperty()
+  @Prop()
+  title: string;
+  @ApiProperty()
+  @Prop()
+  message: string;
+  @ApiProperty()
+  @Prop()
+  date: string;
+  @ApiProperty()
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: Users.name })
+  clientId: Users;
+  @ApiProperty()
+  @Prop()
+  platform: string;
+  @Prop()
+  email: string;
 }
 export const ContactFormsSchema = SchemaFactory.createForClass(ContactForms);

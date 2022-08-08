@@ -14,8 +14,8 @@ import RegisterUserForm from "src/layouts/dashboard/users/registerForm";
 import PrivatePage from "src/layouts/pageContainer/privatePage";
 
 const tabs = [
-  { name: "list-users", key: "list" },
-  { name: "register-users", key: "register" },
+  { name: "list-tab", key: "list" },
+  { name: "register-tab", key: "register" },
 ];
 const UsersPage = () => {
   const { profile } = UseAuth();

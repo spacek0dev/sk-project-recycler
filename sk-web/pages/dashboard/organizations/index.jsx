@@ -13,8 +13,8 @@ import RegisterOrganizationForm from "src/layouts/dashboard/organizations/regist
 import PrivatePage from "src/layouts/pageContainer/privatePage";
 
 const tabs = [
-  { name: "list-organizations", key: "list" },
-  { name: "register-organizations", key: "register" },
+  { name: "list-tab", key: "list" },
+  { name: "register-tab", key: "register" },
 ];
 const OrganizationsPage = () => {
   const { profile } = UseAuth();

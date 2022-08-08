@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useAppContext } from "src/contexts/App";
 import { UseTranslate } from "src/contexts/Translate";
 import { useUi } from "src/contexts/UI/ui";
 import useMount from "src/hooks/useMount";
@@ -10,6 +11,7 @@ import { LoginContainer } from "src/styles/login";
 const LoginPage = (props) => {
   const router = useRouter();
   const { hideLoader } = useUi();
+  const { initFirstData } = useAppContext();
   const { translate } = UseTranslate();
   useMount(() => {
     hideLoader();
@@ -26,7 +28,12 @@ const LoginPage = (props) => {
         <h1>{translate("welcome")}</h1>
         <LoginForm
           onSuccess={() => {
-            router.replace("/dashboard");
+            router
+              .replace("/dashboard")
+              .then((result) => {
+                router.reload();
+              })
+              .catch((err) => {});
           }}
         />
         <LoginButtons />

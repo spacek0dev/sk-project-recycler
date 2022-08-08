@@ -11,5 +11,9 @@ export const API = {
   countrys: "/countrys",
   organizations: "/organizations",
   areas: (countryId) => `/areas/country/${countryId}`,
-  allUsers:'/users/all'
+  allUsers: "/users/all",
+  partners: "/partners",
+  awardsCategory: "/awardscategory",
+  awards: "/awards",
+  bags: "/bags",
 };

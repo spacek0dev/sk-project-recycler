@@ -1,53 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SkButton from "src/components/button";
 import SkCard from "src/components/card";
 import SkForm from "src/components/form";
 import SkInput from "src/components/input";
 import SkSelect from "src/components/select";
+import SkUploadFile from "src/components/uploadFile";
 import { API } from "src/constants/api";
 import { useAxios } from "src/contexts/Axios";
 import { UseTranslate } from "src/contexts/Translate";
 import { useUi } from "src/contexts/UI/ui";
+import UseS3 from "src/hooks/useS3";
 import { validateObject } from "src/utils";
 import styled from "styled-components";
-
-const ItemsForm = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  @media screen and (max-width: 700px) {
-    justify-content: center;
-  }
-`;
-const ItemForm = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  width: 100%;
-  max-width: 350px;
-  padding: 0px 12px;
-`;
-const RegisterTitleContainer = styled.div`
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-`;
-const RegisterTitle = styled.h1`
-  margin: 12px;
-  padding: 0;
-`;
-const RegisterDescription = styled.p`
-  margin: 12px;
-  padding: 12px;
-  font-weight: 200;
-  max-width: 420px;
-  text-align: center;
-`;
+import { ItemForm, ItemsForm, RegisterDescription, RegisterTitle, RegisterTitleContainer } from "../styles";
 
 const RegisterOrganizationForm = (props) => {
+  const { uploadFile } = UseS3();
+  const [file, setFile] = useState();
   const { notify } = useUi();
   const { post } = useAxios();
   const { translate } = UseTranslate();
@@ -74,24 +43,36 @@ const RegisterOrganizationForm = (props) => {
     });
     setAreaId("");
   };
-  const onSubmitLogin = () => {
+  const saveData = (registerData) => {
+    post(`${API.organizations}`, registerData)
+      .then((result) => {
+        console.log("result: ", result);
+        notify(translate("organization_registered"), "success");
+        clearForm();
+        props.onSuccess();
+      })
+      .catch((err) => {});
+  };
+  const onSubmitLogin = async () => {
     const registerData = {
       ...form,
       areasId,
     };
+    let imageFile = file;
     let isValid = validateObject(registerData);
     if (isValid === 0) {
-      post(`${API.organizations}`, registerData)
-        .then((result) => {
-          notify(translate("organization_registered"), "success");
-          clearForm();
-          props.onSuccess();
-        })
-        .catch((err) => {});
+      if (imageFile) {
+        let _file = await uploadFile(imageFile);
+        registerData.logo = _file;
+        saveData(registerData);
+      } else {
+        saveData(registerData);
+      }
     } else {
       notify(translate("complete_all_fields"), "error");
     }
   };
+  useEffect(() => {}, []);
   return (
     <SkCard>
       <RegisterTitleContainer>
@@ -153,6 +134,13 @@ const RegisterOrganizationForm = (props) => {
               title={translate("address")}
               onChangeText={(text) => {
                 setForm({ ...form, address: text });
+              }}
+            />
+          </ItemForm>
+          <ItemForm>
+            <SkUploadFile
+              onFile={(file) => {
+                setFile(file);
               }}
             />
           </ItemForm>

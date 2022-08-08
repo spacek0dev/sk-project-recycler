@@ -7,7 +7,9 @@ const validateObject = (object) => {
       count = count + _c;
     }
     if (typeof item == "string") {
-      if (item === "") count++;
+      if (item === "") {
+        count++;
+      }
     }
   });
   return count;

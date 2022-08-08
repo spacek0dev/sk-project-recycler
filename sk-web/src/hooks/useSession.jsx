@@ -26,7 +26,6 @@ const UseSession = () => {
         : true;
     setExistSession(session);
     let _s = session;
-    console.log("_s: ", _s);
     if (_s === false) {
       // router.replace("/auth/login");
     }

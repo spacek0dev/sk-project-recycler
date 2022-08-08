@@ -1,4 +1,3 @@
-
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { ApiProperty } from '@nestjs/swagger';
@@ -6,21 +5,28 @@ import { ApiProperty } from '@nestjs/swagger';
 export type BannersDocument = Banners & Document;
 @Schema({ timestamps: true, collection: 'banners' })
 export class Banners {
+  @ApiProperty()
+  @Prop()
+  image: string;
 
-    @ApiProperty()
-    @Prop()
-    image: String;
+  @ApiProperty()
+  @Prop()
+  slug: string;
 
-    @ApiProperty()
-    @Prop()
-    slug: String;
+  @ApiProperty()
+  @Prop()
+  title: string;
 
-    @ApiProperty()
-    @Prop()
-    title: String;
+  @ApiProperty()
+  @Prop()
+  description: string;
 
-    @ApiProperty()
-    @Prop()
-    status: Boolean;
+  @ApiProperty()
+  @Prop()
+  isLearn: boolean;
+
+  @ApiProperty()
+  @Prop()
+  status: boolean;
 }
 export const BannersSchema = SchemaFactory.createForClass(Banners);

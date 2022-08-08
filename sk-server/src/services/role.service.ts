@@ -21,10 +21,17 @@ export class RoleService {
     }
   }
 
-  async readAll(): Promise<IResponse> {
+  async readAll(page, pageSize): Promise<IResponse> {
+    const _page = parseInt(page) || 1;
+    const _pageSize = parseInt(pageSize) || 20;
+    const count = await this.roleModel.count();
     try {
-      const documents = await this.roleModel.find().exec();
-      return { status: HttpStatus.OK, data: documents };
+      const documents = await this.roleModel
+        .find()
+        .skip(_page == 1 ? 0 : _page * _pageSize)
+        .limit(_pageSize)
+        .exec();
+      return { status: HttpStatus.OK, data: { rows: documents, count } };
     } catch (error) {
       return {
         status: HttpStatus.BAD_REQUEST,

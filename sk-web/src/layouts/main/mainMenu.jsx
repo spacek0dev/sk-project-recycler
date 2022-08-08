@@ -3,9 +3,14 @@ import Link from "next/link";
 import style from "./mainMenu.module.scss";
 import { useRouter } from "next/router";
 import AppConfig from "src/config";
-// import { AuthContext } from '../context/AuthContext';
 import { IoIosLogOut, IoIosHome, IoIosClose } from "react-icons/io";
-import { AuthContext } from "src/contexts/Auth";
+import { IoGiftOutline, IoPeopleCircleOutline } from "react-icons/io5";
+import { FaUserFriends } from "react-icons/fa";
+import { TbBuilding, TbUserPlus } from "react-icons/tb";
+import { FiMessageSquare } from "react-icons/fi";
+import { BiCategory } from "react-icons/bi";
+import { ImBooks } from "react-icons/im";
+import { AuthContext, UseAuth } from "src/contexts/Auth";
 import { useUi } from "src/contexts/UI/ui";
 import { UseTranslate } from "src/contexts/Translate";
 
@@ -13,10 +18,27 @@ const logout = "logout";
 const MainMenu = (props) => {
   const { setIsLanding } = useUi();
   const genearteIcon = (key) => {
-    if (key === "home") {
-      return <IoIosHome />;
-    } else {
-      return key[0];
+    switch (key) {
+      case "home":
+        return <IoIosHome />;
+      case "building":
+        return <TbBuilding />;
+      case "people":
+        return <IoPeopleCircleOutline />;
+      case "gifts":
+        return <IoGiftOutline />;
+      case "configurations":
+        return <BiCategory />;
+      case "usergift":
+        return <TbUserPlus />;
+      case "friends":
+        return <FaUserFriends />;
+      case "messages":
+        return <FiMessageSquare />;
+      case "learn":
+        return <ImBooks />;
+      default:
+        return key[0];
     }
   };
   const router = useRouter();
@@ -34,19 +56,22 @@ const MainMenu = (props) => {
           </div>
           <div className={style.menuListMobile}>
             {AppConfig.menuList.map((value) => {
-              return (
-                <Link href={`${value.link}${value.query ?? ""}`} key={value.key}>
-                  <div
-                    style={{
-                      textTransform: props.state ? "inherit" : "uppercase",
-                    }}
-                    className={`${style.menuListMobileItem} ${router.pathname == value.link ? style.active : ""}`}
-                    onClick={props.onChangeMobile}
-                  >
-                    {!!!props.state ? translate(value.name) : genearteIcon(value.icon)}
-                  </div>
-                </Link>
-              );
+              let exist = value.roles.find((v) => v == useAuth.profile?.roleId?.name);
+              if (exist) {
+                return (
+                  <Link href={`${value.link}${value.query ?? ""}`} key={value.key}>
+                    <div
+                      style={{
+                        textTransform: props.state ? "inherit" : "uppercase",
+                      }}
+                      className={`${style.menuListMobileItem} ${router.pathname == value.link ? style.active : ""}`}
+                      onClick={props.onChangeMobile}
+                    >
+                      {!!!props.state ? translate(value.name) : genearteIcon(value.icon)}
+                    </div>
+                  </Link>
+                );
+              }
             })}
             <div
               style={{
@@ -68,18 +93,21 @@ const MainMenu = (props) => {
         <>
           <div className={style.menuListDesktop}>
             {AppConfig.menuList.map((value) => {
-              return (
-                <Link href={`${value.link}${value.query ?? ""}`} key={value.key}>
-                  <div
-                    style={{
-                      textTransform: props.state ? "inherit" : "uppercase",
-                    }}
-                    className={`${style.menuListDesktopItem} ${router.pathname == value.link ? style.active : ""}`}
-                  >
-                    {props.state ? translate(value.name) : genearteIcon(value.icon)}
-                  </div>
-                </Link>
-              );
+              let exist = value.roles.find((v) => v == useAuth.profile?.roleId?.name);
+              if (exist) {
+                return (
+                  <Link href={`${value.link}${value.query ?? ""}`} key={value.key}>
+                    <div
+                      style={{
+                        textTransform: props.state ? "inherit" : "uppercase",
+                      }}
+                      className={`${style.menuListDesktopItem} ${router.pathname == value.link ? style.active : ""}`}
+                    >
+                      {props.state ? translate(value.name) : genearteIcon(value.icon)}
+                    </div>
+                  </Link>
+                );
+              }
             })}
           </div>
           <div className={style.menuListDesktop}>

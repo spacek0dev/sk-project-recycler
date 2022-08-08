@@ -24,6 +24,7 @@ const ListUsers = ({ data = [], count = 0, onChangePage }) => {
   const initHeader = () => {
     const _headers = [
       { name: translate("fullname"), key: "firstname", sort: null },
+      { name: translate("username"), key: "username", sort: null },
       { name: translate("dni"), key: "dni", sort: null },
       { name: translate("role"), key: "role", sort: null },
       { name: translate("email"), key: "email", sort: null },
@@ -79,6 +80,7 @@ const ListUsers = ({ data = [], count = 0, onChangePage }) => {
       _[translate("id")] = value._id;
       _[translate("fullname")] = `${value.personId.firstname} ${value.personId.lastname}`;
       _[translate("dni")] = value.personId.dni;
+      _[translate("username")] = value.personId.username;
       _[translate("role")] = value.roleId.name;
       _[translate("email")] = value.personId.email;
       _[translate("phone")] = value.personId.phone;
@@ -131,6 +133,12 @@ const ListUsers = ({ data = [], count = 0, onChangePage }) => {
           return item.sort ? a.personId.phone.localeCompare(b.personId.phone) : b.personId.phone.localeCompare(a.personId.phone);
         });
         sortList(appTypes.users, _phone);
+        break;
+      case "username":
+        let _username = data.sort((a, b) => {
+          return item.sort ? a.personId.username.localeCompare(b.personId.username) : b.personId.username.localeCompare(a.personId.username);
+        });
+        sortList(appTypes.users, _username);
         break;
 
       default:
@@ -202,6 +210,13 @@ const ListUsers = ({ data = [], count = 0, onChangePage }) => {
                     }}
                   >
                     {value.personId.firstname} {value.personId.lastname}
+                  </td>
+                  <td
+                    onClick={() => {
+                      selectItem(index);
+                    }}
+                  >
+                    {value.personId.username}
                   </td>
                   <td
                     onClick={() => {

@@ -2,8 +2,11 @@ const appTypes = {
   all: "ALL",
   countrys: "COUNTRYS",
   areas: "AREAS",
+  awardsCategory: "AWARDSCATEGORY",
   users: "USERS",
   organizations: "ORGANIZATIONS",
+  partners: "PARTNERS",
+  roles: "ROLES",
 };
 const initialState = {
   roles: [],
@@ -11,6 +14,8 @@ const initialState = {
   areas: [],
   users: [],
   organizations: [],
+  awardsCategory: [],
+  partners: [],
 };
 const appReducer = (state = initialState, action = {}) => {
   switch (action.type) {
@@ -26,6 +31,10 @@ const appReducer = (state = initialState, action = {}) => {
       return { ...state, users: action.payload };
     case appTypes.organizations:
       return { ...state, organizations: action.payload };
+    case appTypes.partners:
+      return { ...state, partners: action.payload };
+    case appTypes.awardsCategory:
+      return { ...state, partners: action.payload };
     default:
       return state;
   }

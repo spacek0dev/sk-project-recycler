@@ -126,7 +126,7 @@ const RegisterUserForm = (props) => {
           <ItemForm>
             <SkSelect
               key="roles"
-              options={props.roles}
+              options={props.roles.rows}
               title={translate("roles")}
               value={roleId}
               onChangeText={(value) => {

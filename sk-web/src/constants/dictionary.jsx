@@ -3,6 +3,26 @@ const common = {
     en: "Welcome",
     es: "Bienvenido",
   },
+  countrys: {
+    es: "Paises",
+    en: "Countries",
+  },
+  roles: {
+    es: "Roles",
+    en: "Roles",
+  },
+  areas: {
+    es: "Ubicaciones",
+    en: "Areas",
+  },
+  categorys: {
+    es: "Categorias",
+    en: "Categories",
+  },
+  "upload-file": {
+    en: "Upload File",
+    es: "Subir archivo",
+  },
   of: {
     en: "of",
     es: "de",
@@ -57,6 +77,10 @@ const menu = {
     en: "Logout",
     es: "Cerrar sesion",
   },
+  "Configurations-menu": {
+    en: "Configurations",
+    es: "Configuraciones",
+  },
   "Home-menu": {
     en: "Home",
     es: "Inicio",
@@ -69,10 +93,38 @@ const menu = {
     en: "Organizations",
     es: "Organizaciones",
   },
+  "Awards-menu": {
+    en: "Awards",
+    es: "Premios",
+  },
+  "Messages-menu": {
+    en: "Messages",
+    es: "Mensajes",
+  },
+  "Learning-menu": {
+    en: "Learning",
+    es: "Aprendiendo",
+  },
+  "UserAwards-menu": {
+    en: "User awards",
+    es: "Premios canjeados",
+  },
+  "Partners-menu": {
+    en: "Partners",
+    es: "Socios",
+  },
+  "register-category": {
+    en: "Register Category",
+    es: "Registrar categoria",
+  },
+  "AwardsCategory-menu": {
+    en: "Awards Categories",
+    es: "Categorias premios",
+  },
 };
 const LoginPage = {
   username: {
-    es: "Nombre de usuario",
+    es: "Usuario",
     en: "Username",
   },
   password: {
@@ -167,9 +219,47 @@ const OrganizationPage = {
     es: "Registrar organizacion",
     en: "Organization register",
   },
+  organization_registered: {
+    es: "Organizacion registrada satisfactoriamente",
+    en: "Successfully registered organization",
+  },
   "register-organization-description": {
     en: "Remember to complete the form fields in order to register new organization.",
     es: "Recuerda completar los campos del formulario para poder registrar una nueva organizacion.",
+  },
+};
+const RegisterForms = {
+  "list-partners": {
+    es: "Lista de socios",
+    en: "Partners List",
+  },
+  "register-partners": {
+    es: "Registrar socio",
+    en: "Partner register",
+  },
+  "register-partner-description": {
+    en: "Remember to complete the form fields in order to register new partner.",
+    es: "Recuerda completar los campos del formulario para poder registrar un nuevo socio.",
+  },
+  "register-category-description": {
+    en: "Remember to complete the form fields in order to register new category.",
+    es: "Recuerda completar los campos del formulario para poder registrar nueva categoria.",
+  },
+  "register-role-description": {
+    en: "Remember to complete the form fields in order to register new role.",
+    es: "Recuerda completar los campos del formulario para poder registrar nuevo rol.",
+  },
+  "list-tab": {
+    en: "List items",
+    es: "Listar items",
+  },
+  "register-tab": {
+    es: "Registrar",
+    en: "Register",
+  },
+  "register-role": {
+    es: "Registrar rol",
+    en: "Register role",
   },
 };
 const Dictionary = {
@@ -178,5 +268,6 @@ const Dictionary = {
   ...LoginPage,
   ...UsersPage,
   ...OrganizationPage,
+  ...RegisterForms,
 };
 export default Dictionary;

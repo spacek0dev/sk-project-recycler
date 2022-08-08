@@ -11,9 +11,10 @@ const Button = styled.button`
   padding: ${(props) => props.padding ?? "0px"} !important;
   letter-spacing: 1.5px;
   font-weight: 300;
+  border: ${(props) => props.border ?? "none"} !important;
 `;
 
-const SkButton = ({ text, onClick, type, background, textColor, margin, height, padding, width, styles = {} }) => {
+const SkButton = ({ border, text, onClick, type, background, textColor, margin, height, padding, width, styles = {} }) => {
   return (
     <Button
       style={styles}
@@ -24,6 +25,7 @@ const SkButton = ({ text, onClick, type, background, textColor, margin, height, 
       padding={padding}
       height={height}
       value={text}
+      border={border}
       onClick={onClick}
       type={type || "button"}
     >

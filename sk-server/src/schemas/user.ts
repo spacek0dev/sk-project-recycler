@@ -12,19 +12,15 @@ export class Users {
   @Prop({ required: false, default: true })
   enabled: boolean;
 
-  @ApiProperty()
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Person' })
   personId: Person;
 
-  @ApiProperty()
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Organization' })
   organizationId: Organization;
 
-  @ApiProperty()
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Areas' })
   areasId: Areas;
 
-  @ApiProperty()
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Role' })
   roleId: Role;
 }
