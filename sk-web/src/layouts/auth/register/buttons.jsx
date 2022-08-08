@@ -8,7 +8,7 @@ import { useUi } from "src/contexts/UI/ui";
 import TranslateModal from "src/layouts/modals/translate";
 import styled from "styled-components";
 
-const LoginButtons = styled.div`
+const RegisterButtons = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -20,7 +20,7 @@ const LoginButtons = styled.div`
   /* box-shadow: 0 7px 14px 0 rgba(65, 69, 88, 0.1),
     0 3px 6px 0 rgba(0, 0, 0, 0.07); */
 `;
-const LoginButton = styled.div`
+const RegisterButton = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -39,7 +39,7 @@ const Divider = styled.div`
   height: 30px;
   background-color: #2c7be533;
 `;
-const SkLoginButtons = () => {
+const SkRegisterButtons = () => {
   const [isModal, setIsModal] = useState(false);
   const { translate } = UseTranslate();
   const router = useRouter();
@@ -51,28 +51,28 @@ const SkLoginButtons = () => {
   };
   return (
     <>
-      <LoginButtons>
-        <LoginButton
+      <RegisterButtons>
+        <RegisterButton
           onClick={() => {
-            router.push("/auth/register");
+            router.push("/auth/login");
           }}
         >
-          {translate("register")}
-        </LoginButton>
+          {translate("login")}
+        </RegisterButton>
         <Divider />
-        <LoginButton
+        <RegisterButton
           onClick={() => {
             router.push("/help");
           }}
         >
           {translate("help")}
-        </LoginButton>
+        </RegisterButton>
         <Divider />
-        <LoginButton onClick={showModal}>{translate("language")}</LoginButton>
-      </LoginButtons>
+        <RegisterButton onClick={showModal}>{translate("language")}</RegisterButton>
+      </RegisterButtons>
       <TranslateModal isModal={isModal} hideModal={hideModal} />
     </>
   );
 };
 
-export default SkLoginButtons;
+export default SkRegisterButtons;

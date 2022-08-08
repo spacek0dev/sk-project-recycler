@@ -7,6 +7,9 @@ const UseRoute = () => {
     let isValid = AVALIBLE_ROLES.find((value) => value === role);
     if (isValid === "Administrador" && valid) {
       return true; // console.log("Validating");
+    } else if (isValid === "Cliente" && valid) {
+      if (router.pathname === "/client") return true;
+      return router.replace("/client");
     } else if (isValid === "Administrador" || isValid === "Colaborador") {
       return true; //console.log("Validating");
     } else {

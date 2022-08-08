@@ -82,10 +82,11 @@ const AppProvider = (props) => {
   const getOrganizations = async (page = 1, pageSize = 10) => await get(`${API.organizations}?page=${page}&pageSize=${pageSize}`);
   const getAwardsCategory = async (page = 1, pageSize = 10) => await get(`${API.awardsCategory}?page=${page}&pageSize=${pageSize}`);
   const initFirstData = async () => {
+    /* No session */
+    let { data: countrys } = await getCountrys();
+    let { data: roles } = await getRoles();
+    let { data: areas } = await getAreas(countrys.rows[0]._id);
     if (sessionToken.length < 20) {
-      let { data: roles } = await getRoles();
-      let { data: areas } = await getAreas(countrys.rows[0]._id);
-      let { data: countrys } = await getCountrys();
       let _data_ = {
         roles: roles,
         countrys: countrys,
@@ -94,11 +95,20 @@ const AppProvider = (props) => {
       dispatch({ type: appTypes.all, payload: _data_ });
       return;
     }
+    /* Have session */
+    const role = profile?.roleId;
+    if (role.name === "Cliente") {
+      let _data_ = {
+        roles: roles,
+        countrys: countrys,
+        areas: areas,
+      };
+      dispatch({ type: appTypes.all, payload: _data_ });
+      return;
+    }
+
     let { data: allUsers } = await getAllUsers();
     let { data: awardsCategory } = await getAwardsCategory();
-    let { data: countrys } = await getCountrys();
-    let { data: roles } = await getRoles();
-    let { data: areas } = await getAreas(countrys.rows[0]._id);
     let { data: organizations } = await getOrganizations();
     let { data: partners } = await getPartners();
     let _data_ = {
@@ -111,11 +121,10 @@ const AppProvider = (props) => {
       awardsCategory: awardsCategory,
     };
     dispatch({ type: appTypes.all, payload: _data_ });
+    return;
   };
   useMount(() => {
-    if (sessionToken.length > 20) {
-      initFirstData();
-    }
+    initFirstData();
   });
   return <AppContext.Provider value={{ sortList, data: state, updateValue, refreshUsersData, refreshOrganizations, initFirstData }}>{props.children}</AppContext.Provider>;
 };

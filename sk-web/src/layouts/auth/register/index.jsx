@@ -1,56 +1,26 @@
-import { useState } from "react";
+import Axios from "axios";
+import { useEffect, useState } from "react";
 import SkButton from "src/components/button";
-import SkCard from "src/components/card";
 import SkForm from "src/components/form";
 import SkInput from "src/components/input";
 import SkSelect from "src/components/select";
-import { API } from "src/constants/api";
+import { API, server_url } from "src/constants/api";
+import { useAppContext } from "src/contexts/App";
+import { UseAuth } from "src/contexts/Auth";
 import { useAxios } from "src/contexts/Axios";
 import { UseTranslate } from "src/contexts/Translate";
 import { useUi } from "src/contexts/UI/ui";
-import useMount from "src/hooks/useMount";
+import { ItemForm, ItemsForm } from "src/layouts/dashboard/styles";
 import { validateObject } from "src/utils";
-import styled from "styled-components";
 
-const ItemsForm = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-`;
-const ItemForm = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  width: 100%;
-  max-width: 350px;
-  padding: 0px 12px;
-`;
-const RegisterTitleContainer = styled.div`
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-`;
-const RegisterTitle = styled.h1`
-  margin: 12px;
-  padding: 0;
-`;
-const RegisterDescription = styled.p`
-  margin: 12px;
-  padding: 12px;
-  font-weight: 200;
-  max-width: 420px;
-  text-align: center;
-`;
-
-const RegisterUserForm = (props) => {
-  const { notify } = useUi();
-  const { post } = useAxios();
+const RegisterForm = ({ onSuccess }) => {
   const { translate } = UseTranslate();
+  const { notify, showLoader, hideLoader, setIsLanding } = useUi();
+  const { post } = useAxios();
+  const { sessionToken } = UseAuth();
   const [areasId, setAreaId] = useState("");
-  const [roleId, setRoleId] = useState("");
   const [organizationId, setOrganizationId] = useState("");
+  const { data } = useAppContext();
   const [form, setForm] = useState({
     username: "",
     password: "",
@@ -77,77 +47,61 @@ const RegisterUserForm = (props) => {
       terms_conditions: true,
     });
     setAreaId("");
-    setRoleId("");
     setOrganizationId("");
   };
   const onSubmitRegister = () => {
+    const roleId = data.roles.rows.find((v) => v.name === "Cliente" || v.name == "Client");
+    showLoader();
     const registerData = {
-      roleId,
+      roleId: roleId._id,
       areasId,
       person: form,
-      organizationId: organizationId ? organizationId : null,
+      organizationId: "null",
     };
     let isValid = validateObject(registerData);
+    registerData.organizationId = organizationId ? organizationId : null;
     if (isValid === 0) {
       post(`${API.register}`, registerData)
         .then((result) => {
-          notify(translate("user_registered"), "success");
           clearForm();
-          props.onSuccess();
+          onSuccess();
         })
-        .catch((err) => {});
+        .catch((err) => {
+          console.log("err: ", err);
+          hideLoader();
+        });
     } else {
+      hideLoader();
       notify(translate("complete_all_fields"), "error");
     }
   };
+  useEffect(() => {
+    if (sessionToken.length < 20) {
+      setIsLanding(true);
+    }
+  }, [sessionToken]);
   return (
-    <SkCard>
-      <RegisterTitleContainer>
-        <RegisterTitle>{translate("register-users")}</RegisterTitle>
-        <RegisterDescription>{translate("register-user-description")}</RegisterDescription>
-      </RegisterTitleContainer>
+    <>
       <SkForm
         submit={() => {
           onSubmitRegister();
         }}
-        styles={{ padding: "12px 24px", overflow: "auto", textAlign: "center" }}
+        styles={{ textAlign: "center", overflow: "auto" }}
       >
         <ItemsForm>
           <ItemForm>
-            <SkSelect
-              key="areas"
-              options={props.areas[props.areas.length - 1].areas}
-              title={translate("ubication")}
-              value={areasId}
-              onChangeText={(value) => {
-                setAreaId(value);
-              }}
-            />
-          </ItemForm>
-          <ItemForm>
-            <SkSelect
-              key="roles"
-              options={props.roles.rows}
-              title={translate("roles")}
-              value={roleId}
-              onChangeText={(value) => {
-                setRoleId(value);
-              }}
-            />
-          </ItemForm>
-          {roleId && props.roles.find((v) => v._id === roleId).name === "Colaborador" && (
-            <ItemForm>
+            {data?.areas.length > 0 && (
               <SkSelect
-                key="organizations"
-                options={props.organizations.rows}
-                title={translate("organizations")}
-                value={organizationId}
+                key="areas"
+                options={data?.areas[data.areas.length - 1].areas}
+                title={translate("ubication")}
+                value={areasId}
                 onChangeText={(value) => {
-                  setOrganizationId(value);
+                  setAreaId(value);
                 }}
               />
-            </ItemForm>
-          )}
+            )}
+          </ItemForm>
           <ItemForm>
             <SkInput
               margin={"20px 0px"}
@@ -243,7 +197,7 @@ const RegisterUserForm = (props) => {
         </ItemsForm>
         <SkButton width={"220px"} margin={"15px 0px"} type={"submit"} text={"Registrar usuario"} />
       </SkForm>
-    </SkCard>
+    </>
   );
 };
-export default RegisterUserForm;
+export default RegisterForm;

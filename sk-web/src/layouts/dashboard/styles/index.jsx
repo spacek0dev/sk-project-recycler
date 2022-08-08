@@ -14,7 +14,7 @@ const ItemsForm = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 771px) {
     justify-content: center;
   }
 `;
@@ -26,6 +26,12 @@ const ItemForm = styled.div`
   width: 100%;
   max-width: 350px;
   padding: 0px 12px;
+  @media screen and (max-width: 771px) {
+    max-width: 320px;
+  }
+  @media screen and (max-width: 771px) and (min-width: 570px) {
+    max-width: 280px;
+  }
 `;
 const RegisterTitleContainer = styled.div`
   align-items: center;
