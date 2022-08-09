@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { UseTranslate } from "src/contexts/Translate";
 const PaginationContainer = styled.div`
   width: "100%";
@@ -40,21 +40,24 @@ const PaginationButton = styled.button`
 
 const Pagination = ({ page = 1, count = 0, pageSize = 10, onChangePage }) => {
   const { translate } = UseTranslate();
+  const [_page, setPage] = useState(page);
   useEffect(() => {}, []);
   return (
     <PaginationContainer>
       <PaginationText>
-        {translate("showing")} {page} {"-"} {Math.ceil(Number(count / pageSize))} {translate("of")} {count} {translate("entries")}
+        {translate("showing")} {_page} {"-"} {Math.ceil(Number(count / pageSize))} {translate("of")} {count} {translate("entries")}
       </PaginationText>
       <PaginationButtons>
         <PaginationButton
-          disabled={Math.ceil(Number(count / pageSize)) == 1 ? true : page == 1 ? true : false}
+          disabled={Math.ceil(Number(count / pageSize)) == 1 ? true : _page == 1 ? true : false}
           onClick={() => {
-            if (page > 1) {
-              console.log("prev");
-              onChangePage(page--);
+            if (_page > 1) {
+              let p = _page;
+              p -= 1;
+              onChangePage(p);
+              setPage(p);
             } else {
-              onChangePage(page);
+              onChangePage(_page);
             }
           }}
         >
@@ -64,8 +67,10 @@ const Pagination = ({ page = 1, count = 0, pageSize = 10, onChangePage }) => {
           disabled={Math.ceil(Number(count / pageSize)) == 1 ? true : page === Math.ceil(Number(count / pageSize)) ? true : false}
           onClick={() => {
             if (page < Math.ceil(Number(count / pageSize))) {
-              console.log("next");
-              onChangePage(page++);
+              let p = page;
+              p += 1;
+              onChangePage(p);
+              setPage(p);
             } else {
               onChangePage(page);
             }

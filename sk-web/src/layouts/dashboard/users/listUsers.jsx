@@ -16,7 +16,7 @@ import { useAppContext } from "src/contexts/App";
 import { appTypes } from "src/contexts/App/reducer";
 const ListUsers = ({ data = [], count = 0, onChangePage }) => {
   const [header, setHeader] = useState([]);
-  const { sortList } = useAppContext();
+  const { sortList, updateValue } = useAppContext();
   const { translate } = UseTranslate();
   const [items, setItems] = useState([]);
   const [state, setState] = useState(Math.random());
@@ -283,7 +283,9 @@ const ListUsers = ({ data = [], count = 0, onChangePage }) => {
       <Pagination
         count={count}
         onChangePage={(value) => {
+          console.log("value: ", value);
           onChangePage(value);
+          updateValue(appTypes.users, value, 10);
         }}
       />
 

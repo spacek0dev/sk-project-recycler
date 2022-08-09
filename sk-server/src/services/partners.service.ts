@@ -29,7 +29,7 @@ export class PartnersService {
       if (organizationId) {
         const documents = await this.model
           .find({ organizationId: organizationId })
-          .skip(_page == 1 ? 0 : _page * _pageSize)
+          .skip(_page == 1 ? 0 : (_page - 1) * _pageSize)
           .limit(_pageSize)
           .exec();
         return { status: HttpStatus.OK, data: { rows: documents, count } };

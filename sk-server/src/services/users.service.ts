@@ -27,6 +27,7 @@ export class UsersService {
             enabled: 1,
           },
         )
+        .sort({ _id: -1 })
         .populate(
           'personId',
           '_id firstname lastname username phone email address dni addressReference terms_conditions',
@@ -38,7 +39,7 @@ export class UsersService {
           populate: { path: 'countryId', select: '_id name key currency' },
         })
         .populate({ path: 'organizationId', match: 'organizationId' != null })
-        .skip(_page == 1 ? 0 : _page * _pageSize)
+        .skip(_page == 1 ? 0 : (_page - 1) * _pageSize)
         .limit(_pageSize)
         .exec();
 

@@ -43,10 +43,11 @@ const AppProvider = (props) => {
         break;
     }
   };
-  const updateValue = async (type) => {
+  const updateValue = async (type, page = 1, pagesize = 10) => {
     switch (type) {
       case appTypes.users:
-        let { data: allUsers } = await getAllUsers();
+        let { data: allUsers } = await getAllUsers(page, pagesize);
+        console.log('allUsers: ', allUsers);
         dispatch({ type: type, payload: allUsers });
         break;
       case appTypes.users:
