@@ -10,6 +10,8 @@ const common = {
   reset: {es: 'Reiniciar', en: 'Reset'},
   accept: {es: 'Aceptar', en: 'Accept'},
   cancel: {es: 'Cancelar', en: 'Cancel'},
+  see_qrcode: {es: 'Ver Codigo QR', en: 'See QR Code'},
+  change_language: {es: 'Cambiar idioma', en: 'Change language'},
   welcome: {
     en: 'Welcome',
     es: 'Bienvenido',
@@ -91,6 +93,14 @@ const menu = {
   logout: {
     en: 'Logout',
     es: 'Cerrar sesion',
+  },
+  profile: {
+    en: 'Profile',
+    es: 'Mi Perfil',
+  },
+  editprofile: {
+    en: 'Edit profile',
+    es: 'Editar perfil',
   },
   'Configurations-menu': {
     en: 'Configurations',

@@ -130,7 +130,10 @@ export class AuthService {
         _id: 1,
         enabled: 1,
       })
-      .populate('personId', '_id firstname lastname username phone email')
+      .populate(
+        'personId',
+        '_id firstname lastname username phone email address addressReference',
+      )
       .populate('roleId', '_id name')
       .populate({
         path: 'areasId',

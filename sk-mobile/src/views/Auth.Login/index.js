@@ -10,6 +10,7 @@ import {validateObject} from 'utils';
 import {UseUiContext} from 'contexts/UIContext';
 import {UseAuthContext} from 'contexts/AuthContext';
 import {UseTranslate} from 'contexts/TranslateContext';
+import useMount from 'hooks/useMount';
 
 const LoginView = props => {
   const {showAlert, hideLoader, showLoader} = UseUiContext();
@@ -32,6 +33,9 @@ const LoginView = props => {
       hideLoader();
     }
   };
+  useMount(() => {
+    hideLoader();
+  });
   return (
     <SkContainer
       containerStyle={{...SkStyles.flexAllCenterColumn, ...styles.container}}>

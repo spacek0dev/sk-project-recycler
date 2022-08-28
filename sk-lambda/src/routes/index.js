@@ -1,0 +1,12 @@
+const areas = require("./areas");
+const auth = require("./auth");
+const banner = require("./banner");
+const contactForm = require("./contactForm");
+const countrys = require("./countrys");
+const organization = require("./organization");
+const partners = require("./partners");
+const person = require("./person");
+const role = require("./role");
+const user = require("./user");
+const organizationForm = require("./organizationForm");
+module.exports = [areas, auth, banner, contactForm, countrys, organization, partners, person, role, user, organizationForm];

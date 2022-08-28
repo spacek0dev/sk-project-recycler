@@ -9,6 +9,7 @@ const SkCard = ({
   background,
   children,
   onPress,
+  shadowColor = '#000',
 }) => {
   return (
     <Pressable
@@ -18,6 +19,7 @@ const SkCard = ({
           marginVertical,
           marginHorizontal,
           paddingVertical,
+          shadowColor,
           paddingHorizontal,
           background,
         }).container
@@ -36,7 +38,7 @@ const styles = props =>
       marginVertical: props.marginVertical ? props.marginVertical : 0,
       marginHorizontal: props.marginHorizontal ? props.marginHorizontal : 0,
       borderRadius: 8,
-      shadowColor: '#000',
+      shadowColor: props.shadowColor,
       shadowOffset: {
         width: 0,
         height: 2,

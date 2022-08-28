@@ -9,7 +9,6 @@
 import Contexts from 'contexts';
 import React from 'react';
 import Router from 'routes';
-
 const App = () => {
   return (
     <Contexts>

@@ -23,7 +23,6 @@ const AppProvider = props => {
       let _roles = await get(`${API.roles}`, false);
       let _countrys = await get(`${API.countrys}`, false);
       let _areas = await get(`${API.areas(_countrys.data.rows[0]._id)}`, false);
-      console.log('_areas: ', _areas.data[_areas.data.length - 1]);
       setData({
         ...data,
         roles: _roles.data,

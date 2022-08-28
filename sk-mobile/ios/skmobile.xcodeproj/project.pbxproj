@@ -8,6 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* skmobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* skmobileTests.m */; };
+		0878A34D28A39C2100C7BECA /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0878A34B28A3978100C7BECA /* Ionicons.ttf */; };
+		0878A35D28A3A2A200C7BECA /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0878A34E28A3A2A100C7BECA /* EvilIcons.ttf */; };
+		0878A35E28A3A2A200C7BECA /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0878A34F28A3A2A200C7BECA /* FontAwesome5_Solid.ttf */; };
+		0878A35F28A3A2A200C7BECA /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0878A35028A3A2A200C7BECA /* Feather.ttf */; };
+		0878A36028A3A2A200C7BECA /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0878A35128A3A2A200C7BECA /* FontAwesome.ttf */; };
+		0878A36128A3A2A300C7BECA /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0878A35228A3A2A200C7BECA /* Fontisto.ttf */; };
+		0878A36228A3A2A300C7BECA /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0878A35328A3A2A200C7BECA /* Octicons.ttf */; };
+		0878A36328A3A2A300C7BECA /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0878A35428A3A2A200C7BECA /* Zocial.ttf */; };
+		0878A36428A3A2A300C7BECA /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0878A35528A3A2A200C7BECA /* FontAwesome5_Regular.ttf */; };
+		0878A36528A3A2A300C7BECA /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0878A35628A3A2A200C7BECA /* FontAwesome5_Brands.ttf */; };
+		0878A36628A3A2A300C7BECA /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0878A35728A3A2A200C7BECA /* MaterialIcons.ttf */; };
+		0878A36728A3A2A300C7BECA /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0878A35828A3A2A200C7BECA /* MaterialCommunityIcons.ttf */; };
+		0878A36828A3A2A300C7BECA /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0878A35928A3A2A200C7BECA /* Entypo.ttf */; };
+		0878A36928A3A2A300C7BECA /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0878A35A28A3A2A200C7BECA /* AntDesign.ttf */; };
+		0878A36A28A3A2A300C7BECA /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0878A35B28A3A2A200C7BECA /* Foundation.ttf */; };
+		0878A36B28A3A2A300C7BECA /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0878A35C28A3A2A200C7BECA /* SimpleLineIcons.ttf */; };
 		0C80B921A6F3F58F76C31292 /* libPods-skmobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-skmobile.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -30,6 +46,22 @@
 		00E356EE1AD99517003FC87E /* skmobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = skmobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* skmobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = skmobileTests.m; sourceTree = "<group>"; };
+		0878A34B28A3978100C7BECA /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
+		0878A34E28A3A2A100C7BECA /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
+		0878A34F28A3A2A200C7BECA /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Solid.ttf; sourceTree = "<group>"; };
+		0878A35028A3A2A200C7BECA /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
+		0878A35128A3A2A200C7BECA /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		0878A35228A3A2A200C7BECA /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
+		0878A35328A3A2A200C7BECA /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
+		0878A35428A3A2A200C7BECA /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zocial.ttf; sourceTree = "<group>"; };
+		0878A35528A3A2A200C7BECA /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Regular.ttf; sourceTree = "<group>"; };
+		0878A35628A3A2A200C7BECA /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Brands.ttf; sourceTree = "<group>"; };
+		0878A35728A3A2A200C7BECA /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
+		0878A35828A3A2A200C7BECA /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialCommunityIcons.ttf; sourceTree = "<group>"; };
+		0878A35928A3A2A200C7BECA /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
+		0878A35A28A3A2A200C7BECA /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AntDesign.ttf; sourceTree = "<group>"; };
+		0878A35B28A3A2A200C7BECA /* Foundation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Foundation.ttf; sourceTree = "<group>"; };
+		0878A35C28A3A2A200C7BECA /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* skmobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = skmobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = skmobile/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = skmobile/AppDelegate.mm; sourceTree = "<group>"; };
@@ -83,9 +115,33 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0878A34A28A3961A00C7BECA /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0878A35A28A3A2A200C7BECA /* AntDesign.ttf */,
+				0878A35928A3A2A200C7BECA /* Entypo.ttf */,
+				0878A34E28A3A2A100C7BECA /* EvilIcons.ttf */,
+				0878A35028A3A2A200C7BECA /* Feather.ttf */,
+				0878A35128A3A2A200C7BECA /* FontAwesome.ttf */,
+				0878A35628A3A2A200C7BECA /* FontAwesome5_Brands.ttf */,
+				0878A35528A3A2A200C7BECA /* FontAwesome5_Regular.ttf */,
+				0878A34F28A3A2A200C7BECA /* FontAwesome5_Solid.ttf */,
+				0878A35228A3A2A200C7BECA /* Fontisto.ttf */,
+				0878A35B28A3A2A200C7BECA /* Foundation.ttf */,
+				0878A35828A3A2A200C7BECA /* MaterialCommunityIcons.ttf */,
+				0878A35728A3A2A200C7BECA /* MaterialIcons.ttf */,
+				0878A35328A3A2A200C7BECA /* Octicons.ttf */,
+				0878A35C28A3A2A200C7BECA /* SimpleLineIcons.ttf */,
+				0878A35428A3A2A200C7BECA /* Zocial.ttf */,
+				0878A34B28A3978100C7BECA /* Ionicons.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		13B07FAE1A68108700A75B9A /* skmobile */ = {
 			isa = PBXGroup;
 			children = (
+				0878A34A28A3961A00C7BECA /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -242,7 +298,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0878A35E28A3A2A200C7BECA /* FontAwesome5_Solid.ttf in Resources */,
+				0878A36228A3A2A300C7BECA /* Octicons.ttf in Resources */,
+				0878A36328A3A2A300C7BECA /* Zocial.ttf in Resources */,
+				0878A36428A3A2A300C7BECA /* FontAwesome5_Regular.ttf in Resources */,
+				0878A36628A3A2A300C7BECA /* MaterialIcons.ttf in Resources */,
+				0878A36B28A3A2A300C7BECA /* SimpleLineIcons.ttf in Resources */,
+				0878A36028A3A2A200C7BECA /* FontAwesome.ttf in Resources */,
+				0878A36928A3A2A300C7BECA /* AntDesign.ttf in Resources */,
+				0878A34D28A39C2100C7BECA /* Ionicons.ttf in Resources */,
+				0878A35F28A3A2A200C7BECA /* Feather.ttf in Resources */,
+				0878A36728A3A2A300C7BECA /* MaterialCommunityIcons.ttf in Resources */,
+				0878A35D28A3A2A200C7BECA /* EvilIcons.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				0878A36528A3A2A300C7BECA /* FontAwesome5_Brands.ttf in Resources */,
+				0878A36128A3A2A300C7BECA /* Fontisto.ttf in Resources */,
+				0878A36A28A3A2A300C7BECA /* Foundation.ttf in Resources */,
+				0878A36828A3A2A300C7BECA /* Entypo.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,7 +557,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7VEGX6299U;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = skmobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -499,6 +574,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = skmobile;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -511,7 +587,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7VEGX6299U;
 				INFOPLIST_FILE = skmobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -524,6 +603,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = skmobile;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

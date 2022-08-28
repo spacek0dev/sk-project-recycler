@@ -14,29 +14,39 @@ const SkStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  flexAllSpaceBetweenRow: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
   title: {
     fontSize: 18,
+    color: '#1e293b',
     fontWeight: '700',
     textAlign: 'center',
     marginVertical: 6,
   },
   subTitle: {
     fontSize: 16,
+    color: '#1e293b',
     fontWeight: '500',
     textAlign: 'left',
   },
   paragraph: {
     fontSize: 14,
+    color: '#1e293b',
     fontWeight: '200',
     textAlign: 'justify',
   },
   paragraphCenter: {
     fontSize: 14,
     fontWeight: '200',
-    color: '#000',
+    color: '#3f3f46',
     textAlign: 'center',
     paddingHorizontal: 12,
-    marginBottom: 15,
+    marginBottom: 10,
+    marginTop: 10,
   },
   logoImageContainer: {
     width: '100%',
@@ -68,3 +78,10 @@ export const SkDivider = ({widthDivider, heightDivider, background}) =>
     },
   });
 export default SkStyles;
+
+export const SkPaddingHorizontal = value =>
+  StyleSheet.create({
+    _: {
+      paddingHorizontal: value ?? 0,
+    },
+  });

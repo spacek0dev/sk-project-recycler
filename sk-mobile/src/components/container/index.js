@@ -1,9 +1,19 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 
-const SkContainer = ({children, onPress, containerStyle = {}}) => {
+const SkContainer = ({children, onPress, containerStyle = {}, scroll}) => {
   return (
-    <View style={{...styles({}).container, ...containerStyle}}>{children}</View>
+    <>
+      {scroll ? (
+        <ScrollView style={{...styles({}).container, ...containerStyle}}>
+          {children}
+        </ScrollView>
+      ) : (
+        <View style={{...styles({}).container, ...containerStyle}}>
+          {children}
+        </View>
+      )}
+    </>
   );
 };
 export default SkContainer;
